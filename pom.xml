@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.caroso.maven.plugins</groupId>
 	<artifactId>unleash-parent</artifactId>
-	<version>2.10.1-SNAPSHOT</version>
+	<version>#</version>
 	<packaging>pom</packaging>
 
 	<name>Unleash Parent</name>
@@ -31,7 +29,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/caroso-de/unleash-maven-plugin.git</connection>
 		<url>https://github.com/caroso-de/unleash-maven-plugin</url>
-		<tag>feature-allowed-snapshots</tag>
+		<tag>2.10.1</tag>
 	</scm>
 
 	<!-- <issueManagement> <system>GitHub</system> <url>https://github.com/shillner/unleash-maven-plugin/issues</url> 
