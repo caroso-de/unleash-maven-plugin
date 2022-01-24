@@ -4,13 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.itemis</groupId>
-		<artifactId>org-parent</artifactId>
-		<version>3</version>
-	</parent>
-
-	<groupId>com.itemis.maven.plugins</groupId>
+	<groupId>de.caroso.maven.plugins</groupId>
 	<artifactId>unleash-parent</artifactId>
 	<version>2.10.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
