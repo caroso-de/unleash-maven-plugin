@@ -1,0 +1,24 @@
+# this workflow releases the current head (master) upon push (generating a tag)
+# the actual release to github packages is triggered manually, see maven-release.yaml
+
+name: Release with Maven
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B release:prepare release:clean --file pom.xml
