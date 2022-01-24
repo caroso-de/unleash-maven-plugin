@@ -14,7 +14,7 @@
 
   <properties>
     <version.guava>23.0</version.guava>
-    <version.junit>4.12</version.junit>
+    <version.junit>4.13.1</version.junit>
   </properties>
 
   <dependencies>
