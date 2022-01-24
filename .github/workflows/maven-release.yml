@@ -5,7 +5,7 @@ name: Release with Maven
 
 on:
   push:
-    branches: [ release_* ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -26,5 +26,5 @@ jobs:
         git config user.name "GitHub Actions" 
     - name: Build with Maven
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_ACTION_PAT }}
       run: mvn -B release:prepare release:clean --file pom.xml
