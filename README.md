@@ -11,7 +11,7 @@ Releasing
 
 Changelog
 --------
-- v2.10.2: initial implementation for optionally adding exemptions to the snapshots-dependency-check. 
+- v2.10.1: initial implementation for optionally adding exemptions to the snapshots-dependency-check. 
   The property `allowedSnapshots` accepts al list of `g:a:v-style` coordinates that are considered allowed during a release
 
 
