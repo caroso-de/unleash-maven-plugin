@@ -2,12 +2,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.itemis.maven.plugins</groupId>
+    <groupId>de.caroso.maven.plugins</groupId>
     <artifactId>unleash-parent</artifactId>
-    <version>2.10.1-SNAPSHOT</version>
+    <version>2.10.2-SNAPSHOT</version>
   </parent>
 
   <artifactId>unleash-maven-plugin</artifactId>
+  <version>2.10.2-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>Unleash Maven Plugin</name>
@@ -24,12 +25,9 @@
     <version.cdi-plugin-utils>3.4.0</version.cdi-plugin-utils>
     <version.commons-lang3>3.4</version.commons-lang3>
     <version.guava>23.0</version.guava>
-    <version.junit>4.12</version.junit>
-    <version.junit-dataprovider>1.10.3</version.junit-dataprovider>
     <version.maven>3.3.9</version.maven>
     <version.maven-invoker>2.2</version.maven-invoker>
     <version.maven-plugin-plugin>3.4</version.maven-plugin-plugin>
-    <version.mockito-all>1.10.19</version.mockito-all>
     <version.plexus-interactivity-api>1.0-alpha-6</version.plexus-interactivity-api>
     <version.tycho-versions-plugin>1.1.0</version.tycho-versions-plugin>
     <version.versions-maven-plugin>2.5</version.versions-maven-plugin>
@@ -103,7 +101,6 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>${version.junit}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -144,8 +141,7 @@
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>${version.mockito-all}</version>
+      <artifactId>mockito-core</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -160,12 +156,12 @@
       <type>maven-plugin</type>
     </dependency>
     <dependency>
-      <groupId>com.itemis.maven.plugins</groupId>
+      <groupId>de.caroso.maven.plugins</groupId>
       <artifactId>unleash-scm-provider-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.itemis.maven.plugins</groupId>
+      <groupId>de.caroso.maven.plugins</groupId>
       <artifactId>unleash-utils</artifactId>
       <version>${project.version}</version>
     </dependency>

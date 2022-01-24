@@ -2,19 +2,19 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.itemis.maven.plugins</groupId>
+    <groupId>de.caroso.maven.plugins</groupId>
     <artifactId>unleash-parent</artifactId>
-    <version>2.10.1-SNAPSHOT</version>
+    <version>2.10.2-SNAPSHOT</version>
   </parent>
 
   <artifactId>unleash-utils</artifactId>
+  <version>2.10.2-SNAPSHOT</version>
   <name>Unleash Utilities</name>
   <description>Common utility classes provided and used by the plugin. These utilities can f.i. be used by external tools, such as CI server integration plugins.</description>
 
   <properties>
     <version.guava>23.0</version.guava>
     <version.junit>4.12</version.junit>
-    <version.junit-dataprovider>1.10.3</version.junit-dataprovider>
   </properties>
 
   <dependencies>
