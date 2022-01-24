@@ -1,6 +1,24 @@
+Unleash Maven Plugin (de.caroso)
+================================
+A feature-enhanced fork of the original unleash-maven-plugin.
+
+**Not yet available on maven central**
+
+Releasing
+---------
+- Perform a release by interactively using release:perform. No CI integration available yet.
+- Deploy a release to your local repository by running `mvn clean deploy -DaltReleaseDeploymentRepository=...` on the desired tag
+
+Changelog
+--------
+- v2.10.2: initial implementation for optionally adding exemptions to the snapshots-dependency-check. 
+  The property `allowedSnapshots` accepts al list of `g:a:v-style` coordinates that are considered allowed during a release
+
+
+
 Unleash Maven Plugin - More Efficient And Reliable Maven Releases
 =================================================================
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.itemis.maven.plugins/unleash-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.itemis.maven.plugins/unleash-maven-plugin)
+**Not yet available on maven central**
 
 The Unleash Maven Plugin provides functionality to release Maven projects as it is possible with the Maven Release Plugin. While the idea and the core feature (building release artifacts) is the similar, there are many serious differences that make the unleash plugin much more reliable and efficient than the official release plugin. It is furthermore highly extensible and adaptable to your specific requirements when building releases.
 
@@ -25,7 +43,7 @@ The Advantages At A Glance
 --------------------------
 Using the Unleash Maven Plugin brings some significant advantages over the standard Maven Release Plugin as there are f.i.:
 
-1. **A much higher fault tolerance**
+A1. **A much higher fault tolerance**
   * The whole process of building the release can be seen as an atomic operation that can (and will) be rolled back in case of an error automatically.
   * The whole process is implemented as a set of processing steps orchestrated by a workflow. Each step that modifies resources (POMs, SCM, local repository) implements an appropriate rollback method that will be triggered automatically. This whole implementation is based on the library [Maven CDI Plugin Utils](https://github.com/shillner/maven-cdi-plugin-utils) which enables dependency injection, a workflow concept and extensibility for Maven plugins.
   * Even SCM commits are possible during the release of a Maven project using the Unleash Maven Plugin. There are only a few cases that prevent the release from being finished when SCM commits are detected.
