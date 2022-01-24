@@ -29,4 +29,4 @@ jobs:
     - name: Build with Maven
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_ACTION_PAT }}
-      run: mvn -B release:prepare release:clean --file pom.xml
+      run: mvn -B release:prepare release:clean -Dusername=caroso-de -Dpassword=${{ secrets.RELEASE_ACTION_PAT }} --file pom.xml
