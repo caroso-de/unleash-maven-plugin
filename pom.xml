@@ -49,6 +49,8 @@
 		<version.surefire-plugin>2.22.2</version.surefire-plugin>
 		<version.javadoc-plugin>3.3.1</version.javadoc-plugin>
 
+		<version.guava>24.1.1-jre</version.guava>
+		
 		<version.junit>4.13.1</version.junit>
 		<version.mockito-core>3.12.4</version.mockito-core>
 		<version.junit-dataprovider>1.10.3</version.junit-dataprovider>
@@ -57,11 +59,20 @@
 
 		<!-- this server id is added by the github workflow -->
 		<project.scm.id>github</project.scm.id>
+		
+		<!-- FIXME: fix plugin dependencies, see maven-plugin-plugin output -->
+		<maven.plugin.checkExpectedProvidedScope>false</maven.plugin.checkExpectedProvidedScope>	
 	</properties>
 
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+			      <groupId>com.google.guava</groupId>
+			      <artifactId>guava</artifactId>
+			      <version>${version.guava}</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -72,6 +83,11 @@
 				<artifactId>mockito-core</artifactId>
 				<version>${version.mockito-core}</version>
 			</dependency>
+		        <dependency>
+			      <groupId>com.tngtech.java</groupId>
+			      <artifactId>junit-dataprovider</artifactId>
+			      <version>${version.junit-dataprovider}</version>
+		        </dependency>						
 		</dependencies>
 	</dependencyManagement>
 
@@ -108,28 +124,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>disable-java8-doclint</id>
-			<activation>
-				<jdk>[1.8,)</jdk>
-			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<configuration>
-								<additionalparam>-Xdoclint:none</additionalparam>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-	</profiles>
 
 	<distributionManagement>
 		<repository>
