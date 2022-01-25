@@ -49,6 +49,8 @@
 		<version.junit>4.13.1</version.junit>
 		<version.mockito-core>3.12.4</version.mockito-core>
 		<version.junit-dataprovider>1.10.3</version.junit-dataprovider>
+		
+		<project.scm.id>github</project.scm.id>
 	</properties>
 
 
