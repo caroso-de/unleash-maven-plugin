@@ -4,11 +4,11 @@
   <parent>
     <groupId>de.caroso.maven.plugins</groupId>
     <artifactId>unleash-parent</artifactId>
-    <version>2.10.5-SNAPSHOT</version>
+    <version>2.10.5</version>
   </parent>
 
   <artifactId>unleash-scm-provider-api</artifactId>
-  <version>2.10.5-SNAPSHOT</version>
+  <version>2.10.5</version>
   <name>Unleash SCM Provider API</name>
   <description>The API used by the Unleash Maven Plugin to talk to different SCM providers.</description>
 
