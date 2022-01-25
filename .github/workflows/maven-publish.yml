@@ -1,6 +1,6 @@
 # Inspired by https://blog.frankel.ch/github-actions-maven-releases/ (kudos)
 
-name: Maven Package
+name: Publish Release Tag
 
 on:
   push: 
