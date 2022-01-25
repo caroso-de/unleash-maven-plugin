@@ -19,19 +19,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 8
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v1.4.2
       with:
         java-version: '8'
         distribution: 'temurin'
         server-id: github # creates a settings.xml element accordingly
-        settings-path: ${{ github.workspace }}
         
     - name: Configure Git user
       run: |
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
     - name: Create Release Tag
-      run: mvn -B release:prepare release:clean --file pom.xml -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn -B release:prepare release:clean
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_WORKSPACE: ${{ github.workspace }}
