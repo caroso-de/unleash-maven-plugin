@@ -50,7 +50,12 @@
 		<version.mockito-core>3.12.4</version.mockito-core>
 		<version.junit-dataprovider>1.10.3</version.junit-dataprovider>
 		
+		<tagNameFormat>caroso-unleash-@{project.version}</tagNameFormat>
+		
+		<!-- this server id is added by the github workflow -->
 		<project.scm.id>github</project.scm.id>
+		
+		<!-- temporarily to speed things up -->
 		<skipTests>true</skipTests>
 	</properties>
 
