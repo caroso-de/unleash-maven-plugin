@@ -59,6 +59,9 @@
 
 		<!-- this server id is added by the github workflow -->
 		<project.scm.id>github</project.scm.id>
+		
+		<!-- FIXME: fix plugin dependencies, see maven-plugin-plugin output -->
+		<maven.plugin.checkExpectedProvidedScope>false</maven.plugin.checkExpectedProvidedScope>	
 	</properties>
 
 
