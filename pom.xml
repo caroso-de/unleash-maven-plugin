@@ -51,6 +51,7 @@
 		<version.junit-dataprovider>1.10.3</version.junit-dataprovider>
 		
 		<project.scm.id>github</project.scm.id>
+		<skipTests>true</skipTests>
 	</properties>
 
 
