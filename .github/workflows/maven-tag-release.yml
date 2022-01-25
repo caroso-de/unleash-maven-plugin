@@ -1,6 +1,6 @@
 # Inspired by https://blog.frankel.ch/github-actions-maven-releases/ (kudos)
 
-name: Create Release Tag
+name: Release
 
 on:
 #  push: 
