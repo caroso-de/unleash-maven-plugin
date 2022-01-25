@@ -1,87 +1,141 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.itemis</groupId>
-    <artifactId>org-parent</artifactId>
-    <version>3</version>
-  </parent>
+	<groupId>de.caroso.maven.plugins</groupId>
+	<artifactId>unleash-parent</artifactId>
+	<version>2.10.7-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <groupId>com.itemis.maven.plugins</groupId>
-  <artifactId>unleash-parent</artifactId>
-  <version>2.10.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<name>Unleash Parent</name>
+	<description>An alternative release plugin for maven projects that tries to reduce the risk of failure during the release process as well as the number of builds and scm operations. This plugin shall provide a faster, more stable but also more customizable release process.</description>
+	<url>https://github.com/shillner/unleash-maven-plugin</url>
+	<inceptionYear>2016</inceptionYear>
 
-  <name>Unleash Parent</name>
-  <description>An alternative release plugin for maven projects that tries to reduce the risk of failure during the release process as well as the number of builds and scm operations. This plugin shall provide a faster, more stable but also more customizable release process.</description>
-  <url>https://github.com/shillner/unleash-maven-plugin</url>
-  <inceptionYear>2016</inceptionYear>
+	<developers>
+		<developer>
+			<id>shillner</id>
+			<name>Stanley Hillner</name>
+			<organization>itemis AG</organization>
+			<organizationUrl>https://itemis.com/</organizationUrl>
+			<timezone>1</timezone>
+		</developer>
+		<developer>
+			<id>crohde</id>
+			<name>Carsten Rohde</name>
+		</developer>
+	</developers>
 
-  <developers>
-    <developer>
-      <id>shillner</id>
-      <name>Stanley Hillner</name>
-      <organization>itemis AG</organization>
-      <organizationUrl>https://itemis.com/</organizationUrl>
-      <timezone>1</timezone>
-    </developer>
-  </developers>
+	<scm>
+		<connection>scm:git:https://github.com/caroso-de/unleash-maven-plugin.git</connection>
+		<url>https://github.com/caroso-de/unleash-maven-plugin</url>
+		<tag>HEAD</tag>
+	</scm>
 
-  <scm>
-    <connection>scm:git:https://github.com/shillner/unleash-maven-plugin.git</connection>
-    <url>https://github.com/shillner/unleash-maven-plugin</url>
-    <tag>HEAD</tag>
-  </scm>
+	<!-- <issueManagement> <system>GitHub</system> <url>https://github.com/shillner/unleash-maven-plugin/issues</url> 
+		</issueManagement> -->
+	<modules>
+		<module>scm-provider-api</module>
+		<module>plugin</module>
+		<module>utils</module>
+	</modules>
 
-  <issueManagement>
-    <system>GitHub</system>
-    <url>https://github.com/shillner/unleash-maven-plugin/issues</url>
-  </issueManagement>
+	<properties>
+		<version.java>1.8</version.java>
 
-  <modules>
-    <module>scm-provider-api</module>
-    <module>plugin</module>
-    <module>utils</module>
-  </modules>
+		<version.compiler-plugin>3.8.1</version.compiler-plugin>
+		<version.surefire-plugin>2.22.2</version.surefire-plugin>
+		<version.javadoc-plugin>3.3.1</version.javadoc-plugin>
 
-  <properties>
-    <version.java>1.8</version.java>
-  </properties>
+		<version.junit>4.13.1</version.junit>
+		<version.mockito-core>3.12.4</version.mockito-core>
+		<version.junit-dataprovider>1.10.3</version.junit-dataprovider>
 
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <source>${version.java}</source>
-            <target>${version.java}</target>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+		<tagNameFormat>caroso-unleash-@{project.version}</tagNameFormat>
 
-  <profiles>
-    <profile>
-      <id>disable-java8-doclint</id>
-      <activation>
-        <jdk>[1.8,)</jdk>
-      </activation>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-              <configuration>
-                <additionalparam>-Xdoclint:none</additionalparam>
-              </configuration>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
-    </profile>
-  </profiles>
+		<!-- this server id is added by the github workflow -->
+		<project.scm.id>github</project.scm.id>
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${version.junit}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${version.mockito-core}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.compiler-plugin}</version>
+					<configuration>
+						<source>${version.java}</source>
+						<target>${version.java}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${version.surefire-plugin}</version>
+					<configuration>
+						<forkCount>1</forkCount>
+						<reuseForks>false</reuseForks>
+						<trimStackTrace>false</trimStackTrace>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version.javadoc-plugin}</version>
+					<configuration>
+						<doclint>none</doclint>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>disable-java8-doclint</id>
+			<activation>
+				<jdk>[1.8,)</jdk>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<configuration>
+								<additionalparam>-Xdoclint:none</additionalparam>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/caroso-de/unleash-maven-plugin</url>
+		</repository>
+	</distributionManagement>
 </project>

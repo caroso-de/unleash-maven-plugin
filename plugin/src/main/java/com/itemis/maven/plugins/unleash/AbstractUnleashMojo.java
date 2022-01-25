@@ -213,6 +213,13 @@ public class AbstractUnleashMojo extends AbstractCDIMojo {
   @Parameter(property = "unleash.preserveFixedModuleVersions", required = false, defaultValue = "false")
   private boolean preserveFixedModuleVersions;
 
+  @MojoProduces
+  @Named("allowedSnapshots")
+  @Parameter(property = "unleash.allowedSnapshots", required = false)
+  private List<String> allowedSnapshots;
+
+  
+  
   @Parameter
   private Set<Repository> additionalDeploymentRepositories;
 
