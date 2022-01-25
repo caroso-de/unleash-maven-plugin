@@ -26,7 +26,7 @@
     <version.commons-lang3>3.4</version.commons-lang3>
     <version.maven>3.3.9</version.maven>
     <version.maven-invoker>2.2</version.maven-invoker>
-    <version.maven-plugin-plugin>3.4</version.maven-plugin-plugin>
+    <version.maven-plugin-plugin>3.6.4</version.maven-plugin-plugin>
     <version.plexus-interactivity-api>1.0-alpha-6</version.plexus-interactivity-api>
     <version.tycho-versions-plugin>1.1.0</version.tycho-versions-plugin>
     <version.versions-maven-plugin>2.5</version.versions-maven-plugin>
