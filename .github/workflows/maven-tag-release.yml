@@ -23,13 +23,14 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        server-id: github # creates a settings.xml element accordingly
+        settings-path: ${{ github.workspace }}
+        
     - name: Configure Git user
       run: |
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
     - name: Create Release Tag
-      run: mvn -B release:prepare release:clean --file pom.xml
+      run: mvn -B release:prepare release:clean -Dproject.scm.id=github --file pom.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
