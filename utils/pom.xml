@@ -4,11 +4,11 @@
   <parent>
     <groupId>de.caroso.maven.plugins</groupId>
     <artifactId>unleash-parent</artifactId>
-    <version>2.10.2-SNAPSHOT</version>
+    <version>2.10.2</version>
   </parent>
 
   <artifactId>unleash-utils</artifactId>
-  <version>2.10.2-SNAPSHOT</version>
+  <version>2.10.2</version>
   <name>Unleash Utilities</name>
   <description>Common utility classes provided and used by the plugin. These utilities can f.i. be used by external tools, such as CI server integration plugins.</description>
 

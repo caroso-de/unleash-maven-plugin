@@ -4,11 +4,11 @@
   <parent>
     <groupId>de.caroso.maven.plugins</groupId>
     <artifactId>unleash-parent</artifactId>
-    <version>2.10.2-SNAPSHOT</version>
+    <version>2.10.2</version>
   </parent>
 
   <artifactId>unleash-maven-plugin</artifactId>
-  <version>2.10.2-SNAPSHOT</version>
+  <version>2.10.2</version>
   <packaging>maven-plugin</packaging>
 
   <name>Unleash Maven Plugin</name>
