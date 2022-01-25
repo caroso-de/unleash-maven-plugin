@@ -72,6 +72,8 @@ More about the library can be found here: [Maven CDI Plugin Utils](https://githu
 
 CI Server Integration
 ---------------------
+**The Jenkins Unleash plugin is not actively maintained atm. I recommend using freestyle projects with the release plugin or a parametrized declarative pipeline**
+
 Releases should be built by Continuous Integration Servers only. This is much safer than building them on a local machine since your personal setup and local repository could influence the release build in an unwanted  way.
 
 On any CI server you have the option to create a separate "release job" that sets all necessary optional and calls the  unleash goals manually. When you build this job a new release will be built. Although this is possible and the simplest solution it is quite uncomfortable and error prone since you will have to maintain two different build jobs for the same project. To face this problem there is a plugin for the [Jenkins CI server](https://jenkins.io/) which lets you trigger a release build for an existing Maven job. It is able to store plugin settings globally and locally to make release building as easy as clicking a link.
