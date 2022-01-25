@@ -25,7 +25,7 @@ The Unleash Maven Plugin provides functionality to release Maven projects as it 
 
 Limited Active Development
 ---------------------------
-This Fork will receive fixes and features based on my personal needs at the moment. I've not yet deceided
+This Fork will receive fixes and features based on my personal needs at the moment. I've not yet decided
 whether to maintain this fork permanently or not.
 
 
