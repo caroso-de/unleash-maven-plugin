@@ -50,6 +50,7 @@
 		<version.surefire-plugin>2.22.2</version.surefire-plugin>
 		<version.javadoc-plugin>3.3.1</version.javadoc-plugin>
 		<version.source-plugin>3.2.0</version.source-plugin>
+		<version.gpg-plugin>1.5</version.gpg-plugin>
 		<version.nexus-staging-plugin>1.6.8</version.nexus-staging-plugin>
 
 		<version.guava>29.0-jre</version.guava>
@@ -147,7 +148,12 @@
 				  </goals>
 				</execution>
 			      </executions>
-			    </plugin>				
+			    </plugin>		
+			    <plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-gpg-plugin</artifactId>
+			      <version>${version.gpg-plugin}</version>
+			    </plugin>		
 			</plugins>
 		</pluginManagement>
 		  <plugins>
@@ -173,7 +179,21 @@
 			    <goal>jar</goal>
 			  </goals>
 			</execution>
-		      </executions>			  
+		      </executions>
+	           </plugin>	
+	           <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-gpg-plugin</artifactId>
+		      <executions>
+			<execution>
+			  <id>sign-artifacts</id>
+			  <phase>verify</phase>
+			  <goals>
+			    <goal>sign</goal>
+			  </goals>
+			</execution>
+		      </executions>
+		    </plugin>			  
 		 </plugins>		
 	</build>
 
