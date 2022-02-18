@@ -4,7 +4,7 @@
 
 	<groupId>de.caroso.maven.plugins</groupId>
 	<artifactId>unleash-parent</artifactId>
-	<version>2.10.13</version>
+	<version>2.10.14-SNAPSHOT</version>
 
 
 
@@ -32,7 +32,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/caroso-de/unleash-maven-plugin.git</connection>
 		<url>https://github.com/caroso-de/unleash-maven-plugin</url>
-		<tag>caroso-unleash-2.10.13</tag>
+		<tag>release</tag>
 
 	</scm>
 
