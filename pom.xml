@@ -5,39 +5,37 @@
 	<groupId>de.caroso.maven.plugins</groupId>
 	<artifactId>unleash-parent</artifactId>
 	<version>2.10.13-SNAPSHOT</version>
-
-
-
 	<packaging>pom</packaging>
 
-	<name>Unleash Parent</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 	<description>An alternative release plugin for maven projects that tries to reduce the risk of failure during the release process as well as the number of builds and scm operations. This plugin shall provide a faster, more stable but also more customizable release process.</description>
-	<url>https://github.com/shillner/unleash-maven-plugin</url>
-	<inceptionYear>2016</inceptionYear>
+	<url>https://github.com/caroso-de/unleash-maven-plugin</url>
+	<inceptionYear>2022</inceptionYear>
 
+	<licenses>
+          <license>
+           <name>Eclipse Public License 1.0</name>
+    	   <url>https://www.eclipse.org/legal/epl-v10.html</url>
+  	   </license>
+	</licenses>
+	
 	<developers>
-		<developer>
-			<id>shillner</id>
-			<name>Stanley Hillner</name>
-			<organization>itemis AG</organization>
-			<organizationUrl>https://itemis.com/</organizationUrl>
-			<timezone>1</timezone>
-		</developer>
 		<developer>
 			<id>crohde</id>
 			<name>Carsten Rohde</name>
+			<organization>caroso-de</organization>
+			<organizationUrl>https://github.com/caroso-de</organizationUrl>
 		</developer>
 	</developers>
 
 	<scm>
 		<connection>scm:git:https://github.com/caroso-de/unleash-maven-plugin.git</connection>
+		<developerConnection>scm:git:https://github.com/caroso-de/unleash-maven-plugin.git</developerConnection>		
 		<url>https://github.com/caroso-de/unleash-maven-plugin</url>
 		<tag>release</tag>
 
 	</scm>
 
-	<!-- <issueManagement> <system>GitHub</system> <url>https://github.com/shillner/unleash-maven-plugin/issues</url> 
-		</issueManagement> -->
 	<modules>
 		<module>scm-provider-api</module>
 		<module>plugin</module>
@@ -50,7 +48,12 @@
 		<version.compiler-plugin>3.8.1</version.compiler-plugin>
 		<version.surefire-plugin>2.22.2</version.surefire-plugin>
 		<version.javadoc-plugin>3.3.1</version.javadoc-plugin>
+		<version.source-plugin>3.2.0</version.source-plugin>
+		<version.gpg-plugin>1.5</version.gpg-plugin>
+		<version.nexus-staging-plugin>1.6.8</version.nexus-staging-plugin>
 
+		<version.guava>29.0-jre</version.guava>
+		
 		<version.junit>4.13.1</version.junit>
 		<version.mockito-core>3.12.4</version.mockito-core>
 		<version.junit-dataprovider>1.10.3</version.junit-dataprovider>
@@ -59,11 +62,20 @@
 
 		<!-- this server id is added by the github workflow -->
 		<project.scm.id>github</project.scm.id>
+		
+		<!-- FIXME: fix plugin dependencies, see maven-plugin-plugin output -->
+		<maven.plugin.checkExpectedProvidedScope>false</maven.plugin.checkExpectedProvidedScope>	
 	</properties>
 
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+			      <groupId>com.google.guava</groupId>
+			      <artifactId>guava</artifactId>
+			      <version>${version.guava}</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -74,6 +86,11 @@
 				<artifactId>mockito-core</artifactId>
 				<version>${version.mockito-core}</version>
 			</dependency>
+		        <dependency>
+			      <groupId>com.tngtech.java</groupId>
+			      <artifactId>junit-dataprovider</artifactId>
+			      <version>${version.junit-dataprovider}</version>
+		        </dependency>						
 		</dependencies>
 	</dependencyManagement>
 
@@ -107,37 +124,90 @@
 						<doclint>none</doclint>
 					</configuration>
 				</plugin>
+			     <plugin>
+			      <groupId>org.sonatype.plugins</groupId>
+			      <artifactId>nexus-staging-maven-plugin</artifactId>
+			      <version>${version.nexus-staging-plugin}</version>
+			      <extensions>true</extensions>
+			      <configuration>
+				<serverId>ossrh</serverId>
+				<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+				<autoReleaseAfterClose>false</autoReleaseAfterClose>
+			      </configuration>
+			    </plugin>	
+			    <plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-source-plugin</artifactId>
+			       <version>${version.source-plugin}</version>	    
+			      <executions>
+				<execution>
+				  <id>attach-sources</id>
+				  <goals>
+				    <goal>jar-no-fork</goal>
+				  </goals>
+				</execution>
+			      </executions>
+			    </plugin>		
+			    <plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-gpg-plugin</artifactId>
+			      <version>${version.gpg-plugin}</version>
+				<configuration>
+				  <gpgArguments>
+				      <arg>--pinentry-mode</arg>
+				      <arg>loopback</arg>
+				  </gpgArguments>
+				</configuration>		    
+			    </plugin>		
 			</plugins>
 		</pluginManagement>
+		  <plugins>
+		    <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-source-plugin</artifactId>
+		      <executions>
+			<execution>
+			  <id>attach-sources</id>
+			  <goals>
+			    <goal>jar-no-fork</goal>
+			  </goals>
+			</execution>
+		      </executions>
+		    </plugin>
+		    <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-javadoc-plugin</artifactId>
+		      <executions>
+			<execution>
+			  <id>attach-javadocs</id>
+			  <goals>
+			    <goal>jar</goal>
+			  </goals>
+			</execution>
+		      </executions>
+	           </plugin>	
+	           <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-gpg-plugin</artifactId>
+		      <executions>
+			<execution>
+			  <id>sign-artifacts</id>
+			  <phase>verify</phase>
+			  <goals>
+			    <goal>sign</goal>
+			  </goals>
+			</execution>
+		      </executions>
+		    </plugin>			  
+		 </plugins>		
 	</build>
 
-	<profiles>
-		<profile>
-			<id>disable-java8-doclint</id>
-			<activation>
-				<jdk>[1.8,)</jdk>
-			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<configuration>
-								<additionalparam>-Xdoclint:none</additionalparam>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-	</profiles>
-
 	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/caroso-de/unleash-maven-plugin</url>
-		</repository>
+	  <snapshotRepository>
+	    <id>ossrh</id>
+	    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+	  </snapshotRepository>
 	</distributionManagement>
+	
+	
 </project>
