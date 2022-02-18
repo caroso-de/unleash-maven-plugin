@@ -8,10 +8,8 @@ on:
   workflow_dispatch:
     
 
-  # push:
-    # branches: [ develop ]
-  # pull_request:
-    # branches: [ develop, release ]
+  push:
+    branches: [ develop ]
 
 jobs:
   build:
@@ -21,7 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    # ##### Setu up for Maven Central
+    # ##### Setup for Maven Central, see https://github.com/actions/setup-java
+    # #############################
     - name: Set up JDK 8
       uses: actions/setup-java@v2
       with:
@@ -34,7 +33,7 @@ jobs:
         gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
         
-    - name: Build with Maven
+    - name: Deploy Snapshot to Central
       run: mvn deploy --file pom.xml --batch-mode
       env:
         MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
