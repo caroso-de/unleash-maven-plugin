@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     
 
-  push:
+  # push:
     # branches: [ develop ]
-  pull_request:
+  # pull_request:
     # branches: [ develop, release ]
 
 jobs:
