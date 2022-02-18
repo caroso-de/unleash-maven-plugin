@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -136,8 +137,7 @@ public class CheckDependencyVersions implements CDIMojoProcessingStep {
 			HashSet<ArtifactCoordinates> snapshotDependencies = Sets
 					.newHashSet(Collections2.transform(snapshots, DependencyToCoordinates.INSTANCE));
 			filterMultiModuleDependencies(snapshotDependencies);
-			filterAllowedSnapshotDependencies(snapshotDependencies);
-			return snapshotDependencies;
+			return filterDisAllowedSnapshotDependencies(snapshotDependencies);
 		}
 		return Collections.emptySet();
 	}
@@ -149,8 +149,7 @@ public class CheckDependencyVersions implements CDIMojoProcessingStep {
 		HashSet<ArtifactCoordinates> snapshotDependencies = Sets
 				.newHashSet(Collections2.transform(snapshots, DependencyToCoordinates.INSTANCE));
 		filterMultiModuleDependencies(snapshotDependencies);
-		filterAllowedSnapshotDependencies(snapshotDependencies);
-		return snapshotDependencies;
+		return filterDisAllowedSnapshotDependencies(snapshotDependencies);
 	}
 
 	private Set<ArtifactCoordinates> getSnapshotsFromAllProfiles(MavenProject project,
@@ -164,8 +163,7 @@ public class CheckDependencyVersions implements CDIMojoProcessingStep {
 			}
 		}
 		filterMultiModuleDependencies(snapshots);
-		filterAllowedSnapshotDependencies(snapshots);
-		return snapshots;
+		return filterDisAllowedSnapshotDependencies(snapshots);
 	}
 
 	private Set<ArtifactCoordinates> getSnapshotsFromManagement(Profile profile, PomPropertyResolver propertyResolver) {
@@ -202,11 +200,11 @@ public class CheckDependencyVersions implements CDIMojoProcessingStep {
 		}
 	}
 
-	private Collection<ArtifactCoordinates> filterAllowedSnapshotDependencies(
+	private Set<ArtifactCoordinates> filterDisAllowedSnapshotDependencies(
 			Collection<ArtifactCoordinates> someSnapshotDependencies) {
 
 		return someSnapshotDependencies.stream()//
-				.filter(new IsMatchingCoordinates(allowedSnapshots))//
+				.filter(new IsMatchingCoordinates(allowedSnapshots).negate())//
 				.collect(Collectors.toSet());
 	}
 
