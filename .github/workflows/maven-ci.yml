@@ -35,7 +35,7 @@ jobs:
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
         
     - name: Build with Maven
-      run: mvn -B deploy --file pom.xml
+      run: mvn deploy --file pom.xml
       env:
         MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
         MAVEN_CENTRAL_TOKEN: ${{ secrets.CENTRAL_PASSWORD }}
