@@ -10,6 +10,7 @@
   <artifactId>unleash-scm-provider-api</artifactId>
   <version>2.10.11-SNAPSHOT</version>
 
+
   <name>Unleash SCM Provider API</name>
   <description>The API used by the Unleash Maven Plugin to talk to different SCM providers.</description>
 
