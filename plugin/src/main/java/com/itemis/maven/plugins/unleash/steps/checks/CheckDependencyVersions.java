@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -201,10 +202,12 @@ public class CheckDependencyVersions implements CDIMojoProcessingStep {
 		}
 	}
 
-	private void filterAllowedSnapshotDependencies(Collection<ArtifactCoordinates> aSnapshotDependencies) {
-		Collection<ArtifactCoordinates> tAllowedSnapshots = Collections2.filter(aSnapshotDependencies,
-				new IsMatchingCoordinates(allowedSnapshots));
-		aSnapshotDependencies.removeAll(tAllowedSnapshots);
+	private Collection<ArtifactCoordinates> filterAllowedSnapshotDependencies(
+			Collection<ArtifactCoordinates> someSnapshotDependencies) {
+
+		return someSnapshotDependencies.stream()//
+				.filter(new IsMatchingCoordinates(allowedSnapshots))//
+				.collect(Collectors.toSet());
 	}
 
 }
