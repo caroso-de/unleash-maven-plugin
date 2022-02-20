@@ -8,16 +8,24 @@ name: Build Only
 on:
   workflow_dispatch:
   pull_request:
-    branches: [*]
+    branches: [develop, master]
   
 
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
+    - name: activate development profile on develop
+      if: github.ref == 'refs/heads/develop'
+      env:
+        profile: "-P develop"
+    - name: deactivate development profile on other branches
+      if: github.ref != 'refs/heads/develop'
+      env:
+        profile: ""
+
     - uses: actions/checkout@v2
     
     # ##### Setup for Maven Central, see https://github.com/actions/setup-java
@@ -30,6 +38,5 @@ jobs:
         cache: maven
         
     - name: Build
-      run: mvn package --file pom.xml --batch-mode
-        
+      run: mvn package --file pom.xml --batch-mode $profile
         
