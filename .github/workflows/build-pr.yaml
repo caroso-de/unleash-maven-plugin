@@ -18,10 +18,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2    
-    - name: deactivate development profile on other branches
-      if: github.ref != 'refs/heads/develop'
-      env:
-        profile: ""
     
     # ##### Setup for Maven Central, see https://github.com/actions/setup-java
     # #############################
