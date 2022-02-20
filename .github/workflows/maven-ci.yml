@@ -31,7 +31,7 @@ jobs:
         gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
         
     - name: Deploy Snapshot to Central
-      run: mvn deploy --file pom.xml --batch-mode
+      run: mvn deploy --file pom.xml --batch-mode -P distribution,develop
       env:
         MAVEN_CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
         MAVEN_CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
