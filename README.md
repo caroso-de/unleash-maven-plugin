@@ -11,6 +11,7 @@ Releasing
 
 Changelog
 --------
+- v3.0.0-rc1 (upcoming) first maven-central release
 - v2.10.1: initial implementation for optionally adding exemptions to the snapshots-dependency-check. 
   The property `allowedSnapshots` accepts al list of `g:a:v-style` coordinates that are considered allowed during a release
 
