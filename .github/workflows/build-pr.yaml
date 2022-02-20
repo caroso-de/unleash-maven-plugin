@@ -3,7 +3,7 @@
 # see https://gist.github.com/sualeh/ae78dc16123899d7942bc38baba5203c
 # see https://bjansen.github.io/java/2021/02/03/deploying-to-maven-central-using-github-actions.html
 
-name: Java CI with Maven
+name: Build Only
 
 on:
   workflow_dispatch:
