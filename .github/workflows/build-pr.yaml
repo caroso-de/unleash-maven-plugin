@@ -17,16 +17,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: activate development profile on develop
-      if: github.ref == 'refs/heads/develop'
-      env:
-        profile: "-P develop"
+    - uses: actions/checkout@v2    
     - name: deactivate development profile on other branches
       if: github.ref != 'refs/heads/develop'
       env:
         profile: ""
-
-    - uses: actions/checkout@v2
     
     # ##### Setup for Maven Central, see https://github.com/actions/setup-java
     # #############################
@@ -37,6 +32,11 @@ jobs:
         distribution: 'zulu'
         cache: maven
         
-    - name: Build
-      run: mvn package --file pom.xml --batch-mode $profile
+    - name: Build Develop
+      if: github.base_ref == 'refs/heads/develop' || github.ref == 'refs/heads/develop'
+      run: mvn package --file pom.xml --batch-mode -P develop
+      
+    - name: Build Other
+      if: github.base_ref != 'refs/heads/develop' && github.ref != 'refs/heads/develop'
+      run: mvn package --file pom.xml --batch-mode -P develop      
         
