@@ -11,8 +11,12 @@ import org.junit.Test;
 
 import com.itemis.maven.aether.ArtifactCoordinates;
 
+import de.caroso.maven.plugins.unleash.util.predicates.IsMatchingCoordinates;
 import edu.emory.mathcs.backport.java.util.Arrays;
 
+/**
+ * @author <a href="mailto:oss@caroso.de">Carsten Rohde</a> 
+*/
 public class IsMatchingCoordinatesTest {
 
 	@Test

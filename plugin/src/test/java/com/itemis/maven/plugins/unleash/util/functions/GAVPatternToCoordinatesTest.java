@@ -9,7 +9,11 @@ import org.junit.Test;
 
 import com.itemis.maven.aether.ArtifactCoordinates;
 
+import de.caroso.maven.plugins.unleash.util.functions.GAVPatternToCoordinates;
 
+/**
+ * @author <a href="mailto:oss@caroso.de">Carsten Rohde</a> 
+*/
 public class GAVPatternToCoordinatesTest {
 
 

@@ -39,9 +39,9 @@ import com.itemis.maven.plugins.unleash.util.PomPropertyResolver;
 import com.itemis.maven.plugins.unleash.util.functions.DependencyToCoordinates;
 import com.itemis.maven.plugins.unleash.util.functions.ProjectToCoordinates;
 import com.itemis.maven.plugins.unleash.util.functions.ProjectToString;
-import com.itemis.maven.plugins.unleash.util.predicates.IsMatchingCoordinates;
 import com.itemis.maven.plugins.unleash.util.predicates.IsSnapshotDependency;
 
+import de.caroso.maven.plugins.unleash.util.predicates.IsMatchingCoordinates;
 import edu.emory.mathcs.backport.java.util.Arrays;
 
 /**
@@ -49,6 +49,7 @@ import edu.emory.mathcs.backport.java.util.Arrays;
  * would potentially lead to non-reproducible release artifacts.
  *
  * @author <a href="mailto:stanley.hillner@itemis.de">Stanley Hillner</a>
+ * @author <a href="mailto:oss@caroso.de">Carsten Rohde</a> 
  * @since 1.0.0
  */
 @ProcessingStep(id = "checkDependencies", description = "Checks that the project modules do not reference SNAPSHOT dependencies to avoid unreproducible release aritfacts.", requiresOnline = false)
