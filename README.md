@@ -1,34 +1,47 @@
-Unleash Maven Plugin (de.caroso)
+Unleash Maven Plugin (de.caroso fork)
 ================================
-A feature-enhanced fork of the original unleash-maven-plugin.
+A feature-enhanced fork of the original unleash-maven-plugin. 
 
-**Not yet available on maven central**
+See [the original plugin](https://github.com/shillner/unleash-maven-plugin) and [its wiki](https://github.com/shillner/unleash-maven-plugin/wiki) for the basic usage.
 
-Releasing
----------
-- Perform a release by interactively using release:perform. No CI integration available yet.
-- Deploy a release to your local repository by running `mvn clean deploy -DaltReleaseDeploymentRepository=...` on the desired tag
-
-Changelog
---------
-- v3.0.0-rc1 (upcoming) first maven-central release
-- v2.10.1: initial implementation for optionally adding exemptions to the snapshots-dependency-check. 
-  The property `allowedSnapshots` accepts al list of `g:a:v-style` coordinates that are considered allowed during a release
+For the time being I'll provide limited development resources to this plugin, 
+meaning I'll fix thigs and add features mainly based on my persoal requirements. 
+I'll also try to reduce unneccessary dependencies and to keep the rest updated as good as possible.
 
 
+This fork is not yet available on maven central. The first releases made available there will
+start with a release candidate of version 3.0.0. 
+
+Releases prior to 3.0.0.rc1 are to be considered experimental and are not recommended for general usage.
+
+
+Requirements
+------------
+
+- Java 8
+- Maven 3.5 or higher
+
+
+Configuration updates
+----------------------
+
+| Element  | Type | User Property  | Description | Since  |
+|---|---|---|---|---|
+| allowedSnapshots | String[]  | unleash.allowedSnapshots  | list of g:a:v style coordinates to exempt from snapshot checks | 3.0.0.rc1
+
+
+.
+
+.
+
+.
+
+Original description:
 
 Unleash Maven Plugin - More Efficient And Reliable Maven Releases
 =================================================================
-**Not yet available on maven central**
 
 The Unleash Maven Plugin provides functionality to release Maven projects as it is possible with the Maven Release Plugin. While the idea and the core feature (building release artifacts) is the similar, there are many serious differences that make the unleash plugin much more reliable and efficient than the official release plugin. It is furthermore highly extensible and adaptable to your specific requirements when building releases.
-
-
-Limited Active Development
----------------------------
-This Fork will receive fixes and features based on my personal needs at the moment. I've not yet decided
-whether to maintain this fork permanently or not.
-
 
 The Background
 --------------
